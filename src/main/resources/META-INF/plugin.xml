@@ -1,0 +1,31 @@
+<idea-plugin>
+    <id>fr.yopox.test_problem</id>
+    <name>Test problem</name>
+    <vendor email="louis.vignier@supelec.fr" url="https://www.yopox.fr">yopox</vendor>
+
+    <description><![CDATA[
+    Test problem.<br>
+    Adds an inspection for SwingUtilities.invokeLater usages in Java code.
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <localInspection language="JAVA"
+                         displayName="Using 'SwingUtilities.invokeLater' is prohibited"
+                         groupPath="Java"
+                         groupBundle="messages.InspectionsBundle"
+                         groupKey="group.names.probable.bugs"
+                         enabledByDefault="true"
+                         level="ERROR"
+                         implementationClass="fr.yopox.test_problem.JavaInvokeLaterInspection"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
