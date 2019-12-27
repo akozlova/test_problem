@@ -23,6 +23,15 @@
                          enabledByDefault="true"
                          level="ERROR"
                          implementationClass="fr.yopox.test_problem.JavaInvokeLaterInspection"/>
+
+        <localInspection language="UAST"
+                         displayName="Using 'SwingUtilities.invokeLater' is prohibited"
+                         groupPath="Kotlin"
+                         groupBundle="messages.InspectionsBundle"
+                         groupKey="group.names.probable.bugs"
+                         enabledByDefault="true"
+                         level="ERROR"
+                         implementationClass="fr.yopox.test_problem.KotlinInvokeLaterInspection"/>
     </extensions>
 
     <actions>
