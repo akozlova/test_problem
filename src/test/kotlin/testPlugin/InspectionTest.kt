@@ -1,5 +1,6 @@
 package testPlugin
 
+import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.pom.java.LanguageLevel
 import com.intellij.testFramework.builders.JavaModuleFixtureBuilder
 import com.intellij.testFramework.fixtures.JavaCodeInsightFixtureTestCase
@@ -22,7 +23,7 @@ class InspectionTest : JavaCodeInsightFixtureTestCase() {
     private fun doTest(name: String, expected: Boolean) {
         myFixture.configureByFile("$name.java")
         myFixture.enableInspections(JavaInvokeLaterInspection())
-        val highlight = myFixture.doHighlighting()
+        val highlight = myFixture.doHighlighting().filter { it.severity == HighlightSeverity.ERROR }
         for (h in highlight) {
             println(h.description)
         }
