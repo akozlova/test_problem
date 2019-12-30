@@ -1,15 +1,17 @@
 # Test problem
 
+Write inspection to detect `pack.ages.Class.fun`
+
 ## Java inspection
 
-A `JavaLocalInspector` looking for the following `PsiReferenceExpression` is setup :
+The array `forbiddenExpressions` is built according to the import statements :
 
-1. `expression.firstChild` is a `PsiReferenceExpression` corresponding to `*.SwingUtilies`
-1. `expression.lastChild` is a `PsiIdentifier` corresponding to `invokeLater`
+1. The full call `pack.ages.Class.fun` is forbidden
+1. If a package is imported (`import pack.*;` / `import pack.….ages.*;`), the call `Class.fun` is forbidden
+1. If the class is imported (`import pack.ages.Class;`), the call `Class.fun` is forbidden
+1. If the function is imported (`import static pack.ages.Class.fun;`), the call `fun` is forbidden
 
-![Java PSI tree](assets/java_tree.png)
-
-## Kotlin inspection
+## Kotlin inspection (obsolete)
 
 A `AbstractUastNonRecursiveVisitor` looking for the following `UExpression` node is setup :
 
