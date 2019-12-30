@@ -4,9 +4,10 @@ import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.pom.java.LanguageLevel
 import com.intellij.testFramework.builders.JavaModuleFixtureBuilder
 import com.intellij.testFramework.fixtures.JavaCodeInsightFixtureTestCase
+import com.intellij.util.PathUtil
 import fr.yopox.test_problem.JavaInvokeLaterInspection
 import org.junit.Test
-
+import java.io.File
 
 class InspectionTest : JavaCodeInsightFixtureTestCase() {
 
@@ -15,9 +16,10 @@ class InspectionTest : JavaCodeInsightFixtureTestCase() {
         myFixture.testDataPath = "src/test/testData"
     }
 
-    override fun tuneFixture(moduleBuilder: JavaModuleFixtureBuilder<*>?) {
+    override fun tuneFixture(moduleBuilder: JavaModuleFixtureBuilder<*>) {
         super.tuneFixture(moduleBuilder)
-        moduleBuilder?.setLanguageLevel(LanguageLevel.JDK_13)
+        moduleBuilder.addJdk("/Library/Java/JavaVirtualMachines/adoptopenjdk-13.jdk/Contents/Home")
+        moduleBuilder.setLanguageLevel(LanguageLevel.JDK_13)
     }
 
     private fun doTest(name: String, expected: Boolean) {

@@ -1,6 +1,6 @@
 import static javax.swing.SwingUtilities.invokeLater;
 
-public class TestJava {
+class TestJava {
 
     public static void main(String[] args) {
         invokeLater(() -> {});

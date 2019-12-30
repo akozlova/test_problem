@@ -1,4 +1,4 @@
-public class TestJava {
+class TestJava {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {});
@@ -6,7 +6,7 @@ public class TestJava {
 
 }
 
-public class SwingUtilities {
+class SwingUtilities {
 
     public static void invokeLater(Runnable r) {}
 
