@@ -4,12 +4,8 @@ Write inspection to detect `pack.ages.Class.fun`
 
 ## Java inspection
 
-The array `forbiddenExpressions` is built according to the import statements :
-
-1. The full call `pack.ages.Class.fun` is forbidden
-1. If a package is imported (`import pack.*;` / `import pack.….ages.*;`), the call `Class.fun` is forbidden
-1. If the class is imported (`import pack.ages.Class;`), the call `Class.fun` is forbidden
-1. If the function is imported (`import static pack.ages.Class.fun;`), the call `fun` is forbidden
+1. `visitReferenceExpression` looks for a `PsiReferenceExpression` where the `lastChild` name is `fun`.
+1. Then it checks whether `expression.resolve().stub.parentStub` corresponds to `pack.ages.Class`
 
 ## Kotlin inspection (obsolete)
 
